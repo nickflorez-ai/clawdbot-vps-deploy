@@ -1,77 +1,77 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702.5999999999999 816" width="702.5999999999999" height="816" style="--bg:#FFFFFF;--fg:#27272A;background:#FFFFFF">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 702.5999999999999 816" width="702.5999999999999" height="816" style="--bg:#FFFFFF;--fg:#27272A;background:#1a1a1a">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
   text { font-family: 'Inter', system-ui, sans-serif; }
   svg {
     /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
-    --_text:          #1a1a1a;
-    --_text-sec:      var(--muted, color-mix(in srgb, #1a1a1a 60%, #FFFFFF));
-    --_text-muted:    var(--muted, color-mix(in srgb, #1a1a1a 40%, #FFFFFF));
-    --_text-faint:    color-mix(in srgb, #1a1a1a 25%, #FFFFFF);
-    --_line:          var(--line, color-mix(in srgb, #1a1a1a 30%, #FFFFFF));
-    --_arrow:         var(--accent, color-mix(in srgb, #1a1a1a 50%, #FFFFFF));
-    --_node-fill:     var(--surface, color-mix(in srgb, #1a1a1a 3%, #FFFFFF));
-    --_node-stroke:   var(--border, color-mix(in srgb, #1a1a1a 20%, #FFFFFF));
-    --_group-fill:    #FFFFFF;
-    --_group-hdr:     color-mix(in srgb, #1a1a1a 5%, #FFFFFF);
-    --_inner-stroke:  color-mix(in srgb, #1a1a1a 12%, #FFFFFF);
-    --_key-badge:     color-mix(in srgb, #1a1a1a 10%, #FFFFFF);
+    --_text:          #e5e5e5;
+    --_text-sec:      var(--muted, color-mix(in srgb, #e5e5e5 60%, #1a1a1a));
+    --_text-muted:    var(--muted, color-mix(in srgb, #e5e5e5 40%, #1a1a1a));
+    --_text-faint:    color-mix(in srgb, #e5e5e5 25%, #1a1a1a);
+    --_line:          var(--line, color-mix(in srgb, #e5e5e5 30%, #1a1a1a));
+    --_arrow:         var(--accent, color-mix(in srgb, #e5e5e5 50%, #1a1a1a));
+    --_node-fill:     var(--surface, color-mix(in srgb, #e5e5e5 3%, #1a1a1a));
+    --_node-stroke:   var(--border, color-mix(in srgb, #e5e5e5 20%, #1a1a1a));
+    --_group-fill:    #1a1a1a;
+    --_group-hdr:     color-mix(in srgb, #e5e5e5 5%, #1a1a1a);
+    --_inner-stroke:  color-mix(in srgb, #e5e5e5 12%, #1a1a1a);
+    --_key-badge:     color-mix(in srgb, #e5e5e5 10%, #1a1a1a);
   }
 </style>
 <defs>
   <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
-    <polygon points="0 0, 8 2.4, 0 4.8" fill="#444444" />
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="#aaaaaa" />
   </marker>
   <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
-    <polygon points="8 0, 0 2.4, 8 4.8" fill="#444444" />
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="#aaaaaa" />
   </marker>
 </defs>
-<rect x="39.99999999999997" y="40" width="176.09999999999997" height="580" rx="0" ry="0" fill="var(--_group-fill)" stroke="#cccccc" stroke-width="1" />
-<rect x="39.99999999999997" y="40" width="176.09999999999997" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#cccccc" stroke-width="1" />
-<text x="51.99999999999997" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#666666">Phase 1: Human Approves All</text>
-<rect x="236.09999999999997" y="40" width="176.10000000000002" height="736" rx="0" ry="0" fill="var(--_group-fill)" stroke="#cccccc" stroke-width="1" />
-<rect x="236.09999999999997" y="40" width="176.10000000000002" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#cccccc" stroke-width="1" />
-<text x="248.09999999999997" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#666666">Phase 2: AI Pre-Review</text>
-<rect x="432.2" y="40" width="190.39999999999998" height="736" rx="0" ry="0" fill="var(--_group-fill)" stroke="#cccccc" stroke-width="1" />
-<rect x="432.2" y="40" width="190.39999999999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#cccccc" stroke-width="1" />
-<text x="444.2" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#666666">Phase 3: AI-to-AI</text>
-<polyline points="128.04999999999995,132 128.04999999999995,252" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="128.04999999999995,288 128.04999999999995,408" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="128.04999999999995,444 128.04999999999995,564" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="324.15,132 324.15,252" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="324.15,288 324.15,408" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="324.15,444 324.15,564" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="324.15,600 324.15,720" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="527.4,132 527.4,252" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="527.4,288 527.4,408" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="527.4,444 527.4,564" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="527.4,600 527.4,720" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<rect x="87.02499999999995" y="96" width="82.05000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="98.04999999999995" y="252" width="60" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="61.99999999999994" y="408" width="132.10000000000002" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="94.17499999999995" y="564" width="67.75" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="283.125" y="96" width="82.05000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="294.15" y="252" width="60" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="275.97499999999997" y="408" width="96.35000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="258.09999999999997" y="564" width="132.10000000000002" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="290.275" y="720" width="67.75" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="486.375" y="96" width="82.05000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="497.4" y="252" width="60" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="479.22499999999997" y="408" width="96.35000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="472.075" y="564" width="110.65" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="454.2" y="720" width="146.4" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<text x="128.04999999999995" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Work</text>
-<text x="128.04999999999995" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">PR</text>
-<text x="128.04999999999995" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Human Approval</text>
-<text x="128.04999999999995" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Merge</text>
-<text x="324.15" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Work</text>
-<text x="324.15" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">PR</text>
-<text x="324.15" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Review</text>
-<text x="324.15" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Human Approval</text>
-<text x="324.15" y="738" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Merge</text>
-<text x="527.4" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Work</text>
-<text x="527.4" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">PR</text>
-<text x="527.4" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Review</text>
-<text x="527.4" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Approval</text>
-<text x="527.4" y="738" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Human Spot-Check</text>
+<rect x="39.99999999999997" y="40" width="176.09999999999997" height="580" rx="0" ry="0" fill="var(--_group-fill)" stroke="#444444" stroke-width="1" />
+<rect x="39.99999999999997" y="40" width="176.09999999999997" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#444444" stroke-width="1" />
+<text x="51.99999999999997" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#aaaaaa">Phase 1: Human Approves All</text>
+<rect x="236.09999999999997" y="40" width="176.10000000000002" height="736" rx="0" ry="0" fill="var(--_group-fill)" stroke="#444444" stroke-width="1" />
+<rect x="236.09999999999997" y="40" width="176.10000000000002" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#444444" stroke-width="1" />
+<text x="248.09999999999997" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#aaaaaa">Phase 2: AI Pre-Review</text>
+<rect x="432.2" y="40" width="190.39999999999998" height="736" rx="0" ry="0" fill="var(--_group-fill)" stroke="#444444" stroke-width="1" />
+<rect x="432.2" y="40" width="190.39999999999998" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#444444" stroke-width="1" />
+<text x="444.2" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#aaaaaa">Phase 3: AI-to-AI</text>
+<polyline points="128.04999999999995,132 128.04999999999995,252" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="128.04999999999995,288 128.04999999999995,408" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="128.04999999999995,444 128.04999999999995,564" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="324.15,132 324.15,252" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="324.15,288 324.15,408" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="324.15,444 324.15,564" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="324.15,600 324.15,720" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="527.4,132 527.4,252" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="527.4,288 527.4,408" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="527.4,444 527.4,564" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="527.4,600 527.4,720" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="87.02499999999995" y="96" width="82.05000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="98.04999999999995" y="252" width="60" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="61.99999999999994" y="408" width="132.10000000000002" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="94.17499999999995" y="564" width="67.75" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="283.125" y="96" width="82.05000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="294.15" y="252" width="60" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="275.97499999999997" y="408" width="96.35000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="258.09999999999997" y="564" width="132.10000000000002" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="290.275" y="720" width="67.75" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="486.375" y="96" width="82.05000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="497.4" y="252" width="60" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="479.22499999999997" y="408" width="96.35000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="472.075" y="564" width="110.65" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="454.2" y="720" width="146.4" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<text x="128.04999999999995" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Work</text>
+<text x="128.04999999999995" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">PR</text>
+<text x="128.04999999999995" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Human Approval</text>
+<text x="128.04999999999995" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Merge</text>
+<text x="324.15" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Work</text>
+<text x="324.15" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">PR</text>
+<text x="324.15" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Review</text>
+<text x="324.15" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Human Approval</text>
+<text x="324.15" y="738" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Merge</text>
+<text x="527.4" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Work</text>
+<text x="527.4" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">PR</text>
+<text x="527.4" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Review</text>
+<text x="527.4" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Approval</text>
+<text x="527.4" y="738" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Human Spot-Check</text>
 </svg>

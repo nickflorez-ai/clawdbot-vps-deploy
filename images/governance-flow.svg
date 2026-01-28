@@ -1,46 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 872.4000000000001 116" width="872.4000000000001" height="116" style="--bg:#FFFFFF;--fg:#27272A;background:#FFFFFF">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 872.4000000000001 116" width="872.4000000000001" height="116" style="--bg:#FFFFFF;--fg:#27272A;background:#1a1a1a">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
   text { font-family: 'Inter', system-ui, sans-serif; }
   svg {
     /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
-    --_text:          #1a1a1a;
-    --_text-sec:      var(--muted, color-mix(in srgb, #1a1a1a 60%, #FFFFFF));
-    --_text-muted:    var(--muted, color-mix(in srgb, #1a1a1a 40%, #FFFFFF));
-    --_text-faint:    color-mix(in srgb, #1a1a1a 25%, #FFFFFF);
-    --_line:          var(--line, color-mix(in srgb, #1a1a1a 30%, #FFFFFF));
-    --_arrow:         var(--accent, color-mix(in srgb, #1a1a1a 50%, #FFFFFF));
-    --_node-fill:     var(--surface, color-mix(in srgb, #1a1a1a 3%, #FFFFFF));
-    --_node-stroke:   var(--border, color-mix(in srgb, #1a1a1a 20%, #FFFFFF));
-    --_group-fill:    #FFFFFF;
-    --_group-hdr:     color-mix(in srgb, #1a1a1a 5%, #FFFFFF);
-    --_inner-stroke:  color-mix(in srgb, #1a1a1a 12%, #FFFFFF);
-    --_key-badge:     color-mix(in srgb, #1a1a1a 10%, #FFFFFF);
+    --_text:          #e5e5e5;
+    --_text-sec:      var(--muted, color-mix(in srgb, #e5e5e5 60%, #1a1a1a));
+    --_text-muted:    var(--muted, color-mix(in srgb, #e5e5e5 40%, #1a1a1a));
+    --_text-faint:    color-mix(in srgb, #e5e5e5 25%, #1a1a1a);
+    --_line:          var(--line, color-mix(in srgb, #e5e5e5 30%, #1a1a1a));
+    --_arrow:         var(--accent, color-mix(in srgb, #e5e5e5 50%, #1a1a1a));
+    --_node-fill:     var(--surface, color-mix(in srgb, #e5e5e5 3%, #1a1a1a));
+    --_node-stroke:   var(--border, color-mix(in srgb, #e5e5e5 20%, #1a1a1a));
+    --_group-fill:    #1a1a1a;
+    --_group-hdr:     color-mix(in srgb, #e5e5e5 5%, #1a1a1a);
+    --_inner-stroke:  color-mix(in srgb, #e5e5e5 12%, #1a1a1a);
+    --_key-badge:     color-mix(in srgb, #e5e5e5 10%, #1a1a1a);
   }
 </style>
 <defs>
   <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
-    <polygon points="0 0, 8 2.4, 0 4.8" fill="#444444" />
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="#aaaaaa" />
   </marker>
   <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
-    <polygon points="8 0, 0 2.4, 8 4.8" fill="#444444" />
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="#aaaaaa" />
   </marker>
 </defs>
-<polyline points="157.8,58 197.8,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="287,58 327,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="394.75,58 434.75,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="545.4,58 585.4000000000001,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="717.5,58 757.5,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<rect x="40" y="40" width="117.80000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="197.8" y="40" width="89.2" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="327" y="40" width="67.75" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="434.75" y="40" width="110.65" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="585.4000000000001" y="40" width="132.10000000000002" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="757.5" y="40" width="74.9" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<text x="98.9" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Library Repo</text>
-<text x="242.4" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Dispatch</text>
-<text x="360.875" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Agent</text>
-<text x="490.075" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Output Repo</text>
-<text x="651.45" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Human Approval</text>
-<text x="794.95" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Merged</text>
+<polyline points="157.8,58 197.8,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="287,58 327,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="394.75,58 434.75,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="545.4,58 585.4000000000001,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="717.5,58 757.5,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="40" y="40" width="117.80000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="197.8" y="40" width="89.2" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="327" y="40" width="67.75" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="434.75" y="40" width="110.65" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="585.4000000000001" y="40" width="132.10000000000002" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="757.5" y="40" width="74.9" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<text x="98.9" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Library Repo</text>
+<text x="242.4" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Dispatch</text>
+<text x="360.875" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Agent</text>
+<text x="490.075" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Output Repo</text>
+<text x="651.45" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Human Approval</text>
+<text x="794.95" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Merged</text>
 </svg>

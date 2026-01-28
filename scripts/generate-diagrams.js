@@ -67,6 +67,31 @@ const diagrams = {
     E -->|Approved| F[approved/]
     E -->|Changes| G[Feedback to AI]
     G --> A`
+  },
+  'dispatch-architecture': {
+    title: 'Dispatch Architecture',
+    mermaid: `graph TD
+    subgraph Library[Library Repos]
+      L1[Guidelines]
+      L2[Policies]
+      L3[Specs]
+    end
+    
+    L1 --> D[Central Dispatch]
+    L2 --> D
+    L3 --> D
+    
+    D --> A1[Agent: Spec Gen]
+    D --> A2[Agent: Doc Writer]
+    D --> A3[Agent: Validator]
+    
+    A1 --> O1[Specs Repo]
+    A2 --> O2[Training Repo]
+    A3 --> O3[Config Repo]
+    
+    O1 --> H[Human Approval]
+    O2 --> H
+    O3 --> H`
   }
 };
 
@@ -79,22 +104,22 @@ async function main() {
   for (const [name, diagram] of Object.entries(diagrams)) {
     console.log(`Generating ${name}...`);
     
-    // Generate SVG with light theme
+    // Generate SVG with dark theme
     let svg = await renderMermaid(diagram.mermaid, {
-      theme: { bg: '#FFFFFF', fg: '#1a1a1a' }
+      theme: { bg: '#1a1a1a', fg: '#e5e5e5' }
     });
     
     // Inline CSS variables for PNG conversion (rsvg-convert doesn't support CSS vars)
     svg = svg
-      .replace(/var\(--bg\)/g, '#FFFFFF')
-      .replace(/var\(--fg\)/g, '#1a1a1a')
-      .replace(/var\(--_text\)/g, '#1a1a1a')
-      .replace(/var\(--_line\)/g, '#666666')
-      .replace(/var\(--_arrow\)/g, '#444444')
-      .replace(/var\(--_node-fill\)/g, '#f5f5f5')
-      .replace(/var\(--_node-stroke\)/g, '#cccccc')
-      .replace(/var\(--_text-sec\)/g, '#666666')
-      .replace(/var\(--_text-muted\)/g, '#888888');
+      .replace(/var\(--bg\)/g, '#1a1a1a')
+      .replace(/var\(--fg\)/g, '#e5e5e5')
+      .replace(/var\(--_text\)/g, '#e5e5e5')
+      .replace(/var\(--_line\)/g, '#888888')
+      .replace(/var\(--_arrow\)/g, '#aaaaaa')
+      .replace(/var\(--_node-fill\)/g, '#2a2a2a')
+      .replace(/var\(--_node-stroke\)/g, '#444444')
+      .replace(/var\(--_text-sec\)/g, '#aaaaaa')
+      .replace(/var\(--_text-muted\)/g, '#777777');
     
     const svgPath = path.join(OUTPUT_DIR, `${name}.svg`);
     fs.writeFileSync(svgPath, svg);

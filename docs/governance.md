@@ -82,46 +82,7 @@ Agents are simple:
 
 A **Central Dispatch** watches all Library Repos and routes work to the right agents.
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                      LIBRARY REPOS                          │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐    │
-│  │Guidelines│  │ Policies │  │  Specs   │  │ Config   │    │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘    │
-└───────┼─────────────┼─────────────┼─────────────┼──────────┘
-        │             │             │             │
-        └─────────────┴──────┬──────┴─────────────┘
-                             │
-                             ▼
-                 ┌───────────────────────┐
-                 │   CENTRAL DISPATCH    │
-                 │                       │
-                 │  • Watches for commits│
-                 │  • Looks up rules     │
-                 │  • Wakes agents       │
-                 └───────────┬───────────┘
-                             │
-           ┌─────────────────┼─────────────────┐
-           │                 │                 │
-           ▼                 ▼                 ▼
-    ┌────────────┐    ┌────────────┐    ┌────────────┐
-    │  Agent A   │    │  Agent B   │    │  Agent C   │
-    │ (Spec Gen) │    │ (Doc Write)│    │ (Validator)│
-    └──────┬─────┘    └──────┬─────┘    └──────┬─────┘
-           │                 │                 │
-           ▼                 ▼                 ▼
-    ┌────────────┐    ┌────────────┐    ┌────────────┐
-    │ Specs Repo │    │Training Rep│    │ Config Repo│
-    │   (PR)     │    │    (PR)    │    │   (PR)     │
-    └────────────┘    └────────────┘    └────────────┘
-           │                 │                 │
-           └─────────────────┴─────────────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │ Human Approval  │
-                    └─────────────────┘
-```
+![Dispatch Architecture](../images/dispatch-architecture.png)
 
 ### Dispatch Rules
 

@@ -1,59 +1,59 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 976.25 228.9" width="976.25" height="228.9" style="--bg:#FFFFFF;--fg:#27272A;background:#FFFFFF">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 976.25 228.9" width="976.25" height="228.9" style="--bg:#FFFFFF;--fg:#27272A;background:#1a1a1a">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
   text { font-family: 'Inter', system-ui, sans-serif; }
   svg {
     /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
-    --_text:          #1a1a1a;
-    --_text-sec:      var(--muted, color-mix(in srgb, #1a1a1a 60%, #FFFFFF));
-    --_text-muted:    var(--muted, color-mix(in srgb, #1a1a1a 40%, #FFFFFF));
-    --_text-faint:    color-mix(in srgb, #1a1a1a 25%, #FFFFFF);
-    --_line:          var(--line, color-mix(in srgb, #1a1a1a 30%, #FFFFFF));
-    --_arrow:         var(--accent, color-mix(in srgb, #1a1a1a 50%, #FFFFFF));
-    --_node-fill:     var(--surface, color-mix(in srgb, #1a1a1a 3%, #FFFFFF));
-    --_node-stroke:   var(--border, color-mix(in srgb, #1a1a1a 20%, #FFFFFF));
-    --_group-fill:    #FFFFFF;
-    --_group-hdr:     color-mix(in srgb, #1a1a1a 5%, #FFFFFF);
-    --_inner-stroke:  color-mix(in srgb, #1a1a1a 12%, #FFFFFF);
-    --_key-badge:     color-mix(in srgb, #1a1a1a 10%, #FFFFFF);
+    --_text:          #e5e5e5;
+    --_text-sec:      var(--muted, color-mix(in srgb, #e5e5e5 60%, #1a1a1a));
+    --_text-muted:    var(--muted, color-mix(in srgb, #e5e5e5 40%, #1a1a1a));
+    --_text-faint:    color-mix(in srgb, #e5e5e5 25%, #1a1a1a);
+    --_line:          var(--line, color-mix(in srgb, #e5e5e5 30%, #1a1a1a));
+    --_arrow:         var(--accent, color-mix(in srgb, #e5e5e5 50%, #1a1a1a));
+    --_node-fill:     var(--surface, color-mix(in srgb, #e5e5e5 3%, #1a1a1a));
+    --_node-stroke:   var(--border, color-mix(in srgb, #e5e5e5 20%, #1a1a1a));
+    --_group-fill:    #1a1a1a;
+    --_group-hdr:     color-mix(in srgb, #e5e5e5 5%, #1a1a1a);
+    --_inner-stroke:  color-mix(in srgb, #e5e5e5 12%, #1a1a1a);
+    --_key-badge:     color-mix(in srgb, #e5e5e5 10%, #1a1a1a);
   }
 </style>
 <defs>
   <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
-    <polygon points="0 0, 8 2.4, 0 4.8" fill="#444444" />
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="#aaaaaa" />
   </marker>
   <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
-    <polygon points="8 0, 0 2.4, 8 4.8" fill="#444444" />
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="#aaaaaa" />
   </marker>
 </defs>
-<polyline points="797,138 777,138 777,158 163.49377743351408,158 163.49377743351408,136.30622256648593" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="157.48031099931399,93.68031099931397 225.82000000000002,93.68031099931397 225.82000000000002,58 291.29,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="181.8,118 269.84000000000003,118" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="366.19,58 479.39,58 479.39,70" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="387.64,118 479.39,118 479.39,106" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="531.14,88 578.02,88 578.02,58 642.7750000000001,58" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="531.14,88 578.02,88 578.02,118 624.9000000000001,118" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<polyline points="757,118 866.625,118 866.625,120" fill="none" stroke="#666666" stroke-width="0.75" marker-end="url(#arrowhead)" />
-<rect x="200.66000000000003" y="44.5" width="50.32" height="27" rx="4" ry="4" fill="#FFFFFF" stroke="var(--_inner-stroke)" stroke-width="0.5" />
-<text x="225.82000000000002" y="58" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#888888">Simple</text>
-<rect x="197.8" y="104.5" width="56.04" height="27" rx="4" ry="4" fill="#FFFFFF" stroke="var(--_inner-stroke)" stroke-width="0.5" />
-<text x="225.82000000000002" y="118" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#888888">Complex</text>
-<rect x="547.14" y="44.5" width="61.760000000000005" height="27" rx="4" ry="4" fill="#FFFFFF" stroke="var(--_inner-stroke)" stroke-width="0.5" />
-<text x="578.02" y="58" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#888888">Approved</text>
-<rect x="550" y="104.5" width="56.04" height="27" rx="4" ry="4" fill="#FFFFFF" stroke="var(--_inner-stroke)" stroke-width="0.5" />
-<text x="578.02" y="118" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#888888">Changes</text>
-<rect x="797" y="120" width="139.25" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<polygon points="110.9,47.099999999999994 181.8,118 110.9,188.9 40,118" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="291.29" y="40" width="74.9" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="269.84000000000003" y="100" width="117.80000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="427.64" y="70" width="103.5" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="642.7750000000001" y="40" width="96.35000000000001" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<rect x="624.9000000000001" y="100" width="132.10000000000002" height="36" rx="0" ry="0" fill="#f5f5f5" stroke="#cccccc" stroke-width="0.75" />
-<text x="866.625" y="138" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">AI Creates Work</text>
-<text x="110.9" y="118" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Inbox or PR?</text>
-<text x="328.74" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">inbox/</text>
-<text x="328.74" y="118" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Pull Request</text>
-<text x="479.39" y="88" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">You Review</text>
-<text x="690.95" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">approved/</text>
-<text x="690.95" y="118" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#1a1a1a">Feedback to AI</text>
+<polyline points="797,138 777,138 777,158 163.49377743351408,158 163.49377743351408,136.30622256648593" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="157.48031099931399,93.68031099931397 225.82000000000002,93.68031099931397 225.82000000000002,58 291.29,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="181.8,118 269.84000000000003,118" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="366.19,58 479.39,58 479.39,70" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="387.64,118 479.39,118 479.39,106" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="531.14,88 578.02,88 578.02,58 642.7750000000001,58" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="531.14,88 578.02,88 578.02,118 624.9000000000001,118" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="757,118 866.625,118 866.625,120" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="200.66000000000003" y="44.5" width="50.32" height="27" rx="4" ry="4" fill="#1a1a1a" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="225.82000000000002" y="58" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#777777">Simple</text>
+<rect x="197.8" y="104.5" width="56.04" height="27" rx="4" ry="4" fill="#1a1a1a" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="225.82000000000002" y="118" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#777777">Complex</text>
+<rect x="547.14" y="44.5" width="61.760000000000005" height="27" rx="4" ry="4" fill="#1a1a1a" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="578.02" y="58" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#777777">Approved</text>
+<rect x="550" y="104.5" width="56.04" height="27" rx="4" ry="4" fill="#1a1a1a" stroke="var(--_inner-stroke)" stroke-width="0.5" />
+<text x="578.02" y="118" text-anchor="middle" dy="0.35em" font-size="11" font-weight="400" fill="#777777">Changes</text>
+<rect x="797" y="120" width="139.25" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<polygon points="110.9,47.099999999999994 181.8,118 110.9,188.9 40,118" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="291.29" y="40" width="74.9" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="269.84000000000003" y="100" width="117.80000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="427.64" y="70" width="103.5" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="642.7750000000001" y="40" width="96.35000000000001" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="624.9000000000001" y="100" width="132.10000000000002" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<text x="866.625" y="138" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">AI Creates Work</text>
+<text x="110.9" y="118" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Inbox or PR?</text>
+<text x="328.74" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">inbox/</text>
+<text x="328.74" y="118" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Pull Request</text>
+<text x="479.39" y="88" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">You Review</text>
+<text x="690.95" y="58" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">approved/</text>
+<text x="690.95" y="118" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Feedback to AI</text>
 </svg>

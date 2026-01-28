@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 567.2 796" width="567.2" height="796" style="--bg:#FFFFFF;--fg:#27272A;background:#1a1a1a">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');
+  text { font-family: 'Inter', system-ui, sans-serif; }
+  svg {
+    /* Derived from --bg and --fg (overridable via --line, --accent, etc.) */
+    --_text:          #e5e5e5;
+    --_text-sec:      var(--muted, color-mix(in srgb, #e5e5e5 60%, #1a1a1a));
+    --_text-muted:    var(--muted, color-mix(in srgb, #e5e5e5 40%, #1a1a1a));
+    --_text-faint:    color-mix(in srgb, #e5e5e5 25%, #1a1a1a);
+    --_line:          var(--line, color-mix(in srgb, #e5e5e5 30%, #1a1a1a));
+    --_arrow:         var(--accent, color-mix(in srgb, #e5e5e5 50%, #1a1a1a));
+    --_node-fill:     var(--surface, color-mix(in srgb, #e5e5e5 3%, #1a1a1a));
+    --_node-stroke:   var(--border, color-mix(in srgb, #e5e5e5 20%, #1a1a1a));
+    --_group-fill:    #1a1a1a;
+    --_group-hdr:     color-mix(in srgb, #e5e5e5 5%, #1a1a1a);
+    --_inner-stroke:  color-mix(in srgb, #e5e5e5 12%, #1a1a1a);
+    --_key-badge:     color-mix(in srgb, #e5e5e5 10%, #1a1a1a);
+  }
+</style>
+<defs>
+  <marker id="arrowhead" markerWidth="8" markerHeight="4.8" refX="8" refY="2.4" orient="auto">
+    <polygon points="0 0, 8 2.4, 0 4.8" fill="#aaaaaa" />
+  </marker>
+  <marker id="arrowhead-start" markerWidth="8" markerHeight="4.8" refX="0" refY="2.4" orient="auto-start-reverse">
+    <polygon points="8 0, 0 2.4, 8 4.8" fill="#aaaaaa" />
+  </marker>
+</defs>
+<rect x="105.5875" y="40" width="352.45" height="112" rx="0" ry="0" fill="var(--_group-fill)" stroke="#444444" stroke-width="1" />
+<rect x="105.5875" y="40" width="352.45" height="28" rx="0" ry="0" fill="var(--_group-hdr)" stroke="#444444" stroke-width="1" />
+<text x="117.5875" y="54" dy="0.35em" font-size="12" font-weight="600" fill="#aaaaaa">Library Repos</text>
+<polyline points="179.33749999999998,132 179.33749999999998,270 218.675,270" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="299.6875,132 299.6875,270 365.075,270" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="402.16249999999997,132 402.16249999999997,270 365.075,270" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="291.875,288 291.875,308 109.625,308 109.625,408" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="291.875,288 291.875,308 280.025,308 280.025,408" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="291.875,288 291.875,308 454,308 454,408" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="109.625,444 109.625,564" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="280.025,444 280.025,564" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="454,444 454,564" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="109.625,600 109.625,738 231.84999999999997,738" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="280.025,600 280.025,738 231.84999999999997,738" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<polyline points="454,600 454,738 363.95,738" fill="none" stroke="#888888" stroke-width="0.75" marker-end="url(#arrowhead)" />
+<rect x="218.675" y="252" width="146.4" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="40" y="408" width="139.25" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="203.24999999999997" y="408" width="153.55" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="380.8" y="408" width="146.4" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="57.875" y="564" width="103.5" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="217.54999999999998" y="564" width="124.95" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="398.675" y="564" width="110.65" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="231.84999999999997" y="720" width="132.10000000000002" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="127.58749999999998" y="96" width="103.5" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="255.0875" y="96" width="89.2" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<rect x="368.28749999999997" y="96" width="67.75" height="36" rx="0" ry="0" fill="#2a2a2a" stroke="#444444" stroke-width="0.75" />
+<text x="291.875" y="270" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Central Dispatch</text>
+<text x="109.625" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Agent: Spec Gen</text>
+<text x="280.025" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Agent: Doc Writer</text>
+<text x="454" y="426" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Agent: Validator</text>
+<text x="109.625" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Specs Repo</text>
+<text x="280.025" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Training Repo</text>
+<text x="454" y="582" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Config Repo</text>
+<text x="297.9" y="738" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Human Approval</text>
+<text x="179.33749999999998" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Guidelines</text>
+<text x="299.6875" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Policies</text>
+<text x="402.16249999999997" y="114" text-anchor="middle" dy="0.35em" font-size="13" font-weight="500" fill="#e5e5e5">Specs</text>
+</svg>
