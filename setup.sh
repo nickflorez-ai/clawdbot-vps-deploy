@@ -77,6 +77,15 @@ echo "   ✅ QMD installed"
 QMD_PATH=$(which qmd)
 
 # ============================================
+# Step 3b: Install Beautiful Mermaid
+# ============================================
+echo ""
+echo "📦 Installing Beautiful Mermaid..."
+
+npm install -g beautiful-mermaid
+echo "   ✅ Beautiful Mermaid installed (Mermaid → SVG/ASCII diagrams)"
+
+# ============================================
 # Step 4: Create Workspace
 # ============================================
 echo ""

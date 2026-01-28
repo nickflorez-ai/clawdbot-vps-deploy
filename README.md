@@ -23,10 +23,11 @@ cd clawdbot-vps-deploy
 1. **Installs Node.js 22** via NodeSource
 2. **Installs Clawdbot** globally via npm
 3. **Installs QMD** for semantic search
-4. **Creates workspace** at `/root/clawd/`
-5. **Sets up collections** (sessions, memory, workspace)
-6. **Configures cron jobs** for QMD indexing (12pm, 3pm, 6pm, 3am)
-7. **Installs systemd service** for Clawdbot gateway
+4. **Installs Beautiful Mermaid** for diagram rendering (SVG/ASCII)
+5. **Creates workspace** at `/root/clawd/`
+6. **Sets up collections** (sessions, memory, workspace)
+7. **Configures cron jobs** for QMD indexing (12pm, 3pm, 6pm, 3am)
+8. **Installs systemd service** for Clawdbot gateway
 
 ## Post-Install Steps
 
