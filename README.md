@@ -2,11 +2,31 @@
 
 One-command deployment of Clawdbot on a fresh Ubuntu VPS.
 
+---
+
+## Philosophy
+
 **📖 [Read the Vision](VISION.md)** — Why AI assistants matter
 
-**🔒 [Security Policy](docs/security.md)** — Mandatory security requirements
+---
 
-**📋 [Governance Model](docs/governance.md)** — How AI work flows through organizations
+## Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [Security Policy](docs/security.md) | Mandatory security requirements, VPS hardening |
+| [Governance Model](docs/governance.md) | How AI work flows through organizations |
+| [The Library](docs/the-library.md) | Building your source of truth |
+| [Defining Success](docs/defining-success.md) | How to give AI verifiable success criteria |
+
+---
+
+## Templates
+
+| Template | Description |
+|----------|-------------|
+| [Workspace](templates/workspace/) | User workspace repo template (inbox, drafts, approved, decisions) |
+| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
 
 ---
 
