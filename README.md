@@ -2,6 +2,14 @@
 
 One-command deployment of Clawdbot on a fresh Ubuntu VPS.
 
+**📖 [Read the Vision](VISION.md)** — Why AI assistants matter
+
+**🔒 [Security Policy](docs/security.md)** — Mandatory security requirements
+
+**📋 [Governance Model](docs/governance.md)** — How AI work flows through organizations
+
+---
+
 ## Quick Start
 
 SSH into your fresh Ubuntu 24.04 VPS and run:
