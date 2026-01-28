@@ -2,31 +2,7 @@
 
 One-command deployment of Clawdbot on a fresh Ubuntu VPS.
 
----
-
-## Philosophy
-
-**📖 [Read the Vision](VISION.md)** — Why AI assistants matter
-
----
-
-## Documentation
-
-| Guide | Description |
-|-------|-------------|
-| [Security Policy](docs/security.md) | Mandatory security requirements, VPS hardening |
-| [Governance Model](docs/governance.md) | How AI work flows through organizations |
-| [The Library](docs/the-library.md) | Building your source of truth |
-| [Defining Success](docs/defining-success.md) | How to give AI verifiable success criteria |
-
----
-
-## Templates
-
-| Template | Description |
-|----------|-------------|
-| [Workspace](templates/workspace/) | User workspace repo template (inbox, drafts, approved, decisions) |
-| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
+> **For the vision and philosophy, see [cardinal-next](https://github.com/nickflorez/cardinal-next)**
 
 ---
 
@@ -46,6 +22,8 @@ cd clawdbot-vps-deploy
 ./setup.sh
 ```
 
+---
+
 ## What It Does
 
 1. **Installs Node.js 22** via NodeSource
@@ -56,6 +34,17 @@ cd clawdbot-vps-deploy
 6. **Configures cron jobs** for QMD indexing (12pm, 3pm, 6pm, 3am)
 7. **Installs systemd service** for Clawdbot gateway
 
+---
+
+## Templates
+
+| Template | Description |
+|----------|-------------|
+| [Workspace](templates/workspace/) | User workspace repo template |
+| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
+
+---
+
 ## Post-Install Steps
 
 After running the setup script:
@@ -63,7 +52,6 @@ After running the setup script:
 ### 1. Add API Keys
 
 ```bash
-# Create .env with your API keys
 cat > ~/.clawdbot/.env << 'EOF'
 ANTHROPIC_API_KEY=your-key-here
 OPENAI_API_KEY=your-key-here  # Optional fallback
@@ -106,6 +94,17 @@ clawdbot status
 
 Message your bot on Telegram. Complete the pairing process.
 
+---
+
+## Security
+
+See [docs/security.md](docs/security.md) for mandatory VPS hardening steps:
+- Tailscale-only SSH
+- Telegram allowlist
+- Firewall configuration
+
+---
+
 ## Directory Structure
 
 ```
@@ -115,8 +114,7 @@ Message your bot on Telegram. Complete the pairing process.
 ├── USER.md                     # User info
 ├── MEMORY.md                   # Long-term memory
 ├── memory/                     # Daily notes
-├── logs/                       # Log files
-└── scripts/                    # Utility scripts
+└── logs/                       # Log files
 
 ~/.clawdbot/
 ├── clawdbot.json              # Main config
@@ -124,18 +122,7 @@ Message your bot on Telegram. Complete the pairing process.
 └── agents/main/sessions/       # Conversation history
 ```
 
-## Cron Jobs
-
-The setup installs these cron jobs for QMD indexing:
-
-| Time | Command |
-|------|---------|
-| 12:00 PM | `qmd update && qmd embed` |
-| 3:00 PM | `qmd update && qmd embed` |
-| 6:00 PM | `qmd update && qmd embed` |
-| 3:00 AM | `qmd update && qmd embed` |
-
-Logs: `/root/clawd/logs/qmd-index.log`
+---
 
 ## Maintenance
 
@@ -158,12 +145,16 @@ clawdbot gateway restart
 qmd update && qmd embed
 ```
 
+---
+
 ## Requirements
 
 - Ubuntu 22.04 or 24.04
 - Root access
 - 2+ CPU cores, 4GB+ RAM recommended
 - Internet access
+
+---
 
 ## License
 
