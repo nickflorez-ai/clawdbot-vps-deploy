@@ -8,11 +8,7 @@
 
 Your organization has **Library Repos** — repositories that contain verified knowledge. When knowledge is committed to a Library Repo, it can trigger **Agents** to do work. Agents commit their work to **Output Repos** where humans review and approve it.
 
-```
-Library Repo (knowledge) → Dispatch → Agents → Output Repo (work product)
-                                                      ↓
-                                               Human Approval
-```
+![Governance Flow](../images/governance-flow.png)
 
 **The fundamental loop:**
 1. Humans commit knowledge to Library Repos
