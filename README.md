@@ -4,32 +4,6 @@ One-command deployment of Clawdbot on a fresh Ubuntu VPS.
 
 ---
 
-## Philosophy
-
-**📖 [Read the Vision](VISION.md)** — Why AI assistants matter
-
----
-
-## Documentation
-
-| Guide | Description |
-|-------|-------------|
-| [Security Policy](docs/security.md) | Mandatory security requirements, VPS hardening |
-| [Governance Model](docs/governance.md) | How AI work flows through organizations |
-| [The Library](docs/the-library.md) | Building your source of truth |
-| [Defining Success](docs/defining-success.md) | How to give AI verifiable success criteria |
-
----
-
-## Templates
-
-| Template | Description |
-|----------|-------------|
-| [Workspace](templates/workspace/) | User workspace repo template (inbox, drafts, approved, decisions) |
-| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
-
----
-
 ## Quick Start
 
 SSH into your fresh Ubuntu 24.04 VPS and run:
@@ -46,6 +20,8 @@ cd clawdbot-vps-deploy
 ./setup.sh
 ```
 
+---
+
 ## What It Does
 
 1. **Installs Node.js 22** via NodeSource
@@ -55,6 +31,17 @@ cd clawdbot-vps-deploy
 5. **Sets up collections** (sessions, memory, workspace)
 6. **Configures cron jobs** for QMD indexing (12pm, 3pm, 6pm, 3am)
 7. **Installs systemd service** for Clawdbot gateway
+
+---
+
+## Templates
+
+| Template | Description |
+|----------|-------------|
+| [Workspace](templates/workspace/) | User workspace repo template (inbox, drafts, approved, decisions) |
+| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
+
+---
 
 ## Post-Install Steps
 
@@ -106,6 +93,8 @@ clawdbot status
 
 Message your bot on Telegram. Complete the pairing process.
 
+---
+
 ## Directory Structure
 
 ```
@@ -124,6 +113,8 @@ Message your bot on Telegram. Complete the pairing process.
 └── agents/main/sessions/       # Conversation history
 ```
 
+---
+
 ## Cron Jobs
 
 The setup installs these cron jobs for QMD indexing:
@@ -136,6 +127,14 @@ The setup installs these cron jobs for QMD indexing:
 | 3:00 AM | `qmd update && qmd embed` |
 
 Logs: `/root/clawd/logs/qmd-index.log`
+
+---
+
+## Security
+
+See [docs/security.md](docs/security.md) for mandatory VPS hardening steps.
+
+---
 
 ## Maintenance
 
@@ -158,12 +157,16 @@ clawdbot gateway restart
 qmd update && qmd embed
 ```
 
+---
+
 ## Requirements
 
 - Ubuntu 22.04 or 24.04
 - Root access
 - 2+ CPU cores, 4GB+ RAM recommended
 - Internet access
+
+---
 
 ## License
 
