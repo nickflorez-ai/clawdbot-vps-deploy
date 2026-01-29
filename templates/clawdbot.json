@@ -18,17 +18,16 @@
     "mode": "local"
   },
   "channels": {
-    "telegram": {
+    "discord": {
       "botToken": "YOUR_BOT_TOKEN_HERE",
-      "dmPolicy": "pairing",
-      "allowFrom": [],
-      "groupPolicy": "disabled",
-      "streamMode": "partial"
+      "guildId": "YOUR_GUILD_ID_HERE",
+      "channelIds": ["YOUR_CHANNEL_ID_HERE"],
+      "dmPolicy": "disabled"
     }
   },
   "plugins": {
     "entries": {
-      "telegram": {"enabled": true}
+      "discord": {"enabled": true}
     }
   }
 }

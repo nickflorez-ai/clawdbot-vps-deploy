@@ -243,22 +243,21 @@ cat > "$CLAWDBOT_DIR/clawdbot.json" << 'CONFIG_EOF'
     "mode": "local"
   },
   "channels": {
-    "telegram": {
+    "discord": {
       "botToken": "YOUR_BOT_TOKEN_HERE",
-      "dmPolicy": "pairing",
-      "allowFrom": [],
-      "groupPolicy": "disabled",
-      "streamMode": "partial"
+      "guildId": "YOUR_GUILD_ID_HERE",
+      "channelIds": ["YOUR_CHANNEL_ID_HERE"],
+      "dmPolicy": "disabled"
     }
   },
   "plugins": {
     "entries": {
-      "telegram": {"enabled": true}
+      "discord": {"enabled": true}
     }
   }
 }
 CONFIG_EOF
-  echo "   Created clawdbot.json (update botToken!)"
+  echo "   Created clawdbot.json (update Discord config!)"
 else
   echo "   clawdbot.json already exists, skipping"
 fi
@@ -268,6 +267,12 @@ if [ ! -f "$CLAWDBOT_DIR/.env" ]; then
   echo "ANTHROPIC_API_KEY=your-key-here" > "$CLAWDBOT_DIR/.env"
   chmod 600 "$CLAWDBOT_DIR/.env"
   echo "   Created .env template (update API key!)"
+fi
+
+# Update config to use Discord template if creating fresh
+if [ ! -f "$CLAWDBOT_DIR/clawdbot.json" ] || grep -q "telegram" "$CLAWDBOT_DIR/clawdbot.json" 2>/dev/null; then
+  # Config will be created/updated with Discord settings
+  :
 fi
 
 # ============================================
@@ -325,8 +330,11 @@ echo ""
 echo "1. Add your API key:"
 echo "   nano ~/.clawdbot/.env"
 echo ""
-echo "2. Add your Telegram bot token:"
+echo "2. Configure your Discord bot:"
 echo "   nano ~/.clawdbot/clawdbot.json"
+echo "   - Set botToken (from Discord Developer Portal)"
+echo "   - Set guildId (your server ID)"
+echo "   - Set channelIds (channels the bot responds in)"
 echo ""
 echo "3. Customize your agent:"
 echo "   nano /root/clawd/SOUL.md"

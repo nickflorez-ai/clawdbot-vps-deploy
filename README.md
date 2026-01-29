@@ -59,22 +59,27 @@ EOF
 chmod 600 ~/.clawdbot/.env
 ```
 
-### 2. Configure Telegram Bot
+### 2. Configure Discord Bot
 
-Edit `~/.clawdbot/clawdbot.json` and add your bot token:
+Edit `~/.clawdbot/clawdbot.json` and add your bot configuration:
 
 ```json
 {
   "channels": {
-    "telegram": {
+    "discord": {
       "botToken": "YOUR_BOT_TOKEN",
-      "dmPolicy": "pairing",
-      "allowFrom": [],
-      "groupPolicy": "disabled"
+      "guildId": "YOUR_GUILD_ID",
+      "channelIds": ["CHANNEL_ID"],
+      "dmPolicy": "disabled"
     }
   }
 }
 ```
+
+**Required values:**
+- `botToken` — Discord bot token from [Discord Developer Portal](https://discord.com/developers/applications)
+- `guildId` — Your Discord server ID
+- `channelIds` — Array of channel IDs this agent can respond in
 
 ### 3. Customize Agent
 
@@ -90,9 +95,9 @@ clawdbot gateway start
 clawdbot status
 ```
 
-### 5. Pair with Telegram
+### 5. Verify Discord Connection
 
-Message your bot on Telegram. Complete the pairing process.
+Check that the bot is online in your Discord server and responding in the configured channel.
 
 ---
 
@@ -100,7 +105,7 @@ Message your bot on Telegram. Complete the pairing process.
 
 See [docs/security.md](docs/security.md) for mandatory VPS hardening steps:
 - Tailscale-only SSH
-- Telegram allowlist
+- Discord channel allowlist
 - Firewall configuration
 
 ---

@@ -7,23 +7,24 @@
 ## Core Principles
 
 1. **Isolation** — Each AI runs on its own VPS. No shared resources.
-2. **Allowlist** — AI only responds to authorized user(s).
+2. **Channel Allowlist** — AI only responds in authorized Discord channels.
 3. **No Public Access** — VPS is only reachable via Tailscale VPN.
 4. **Audit Trail** — All actions logged and traceable.
 
 ---
 
-## Telegram Security Configuration
+## Discord Security Configuration
 
 Every bot MUST have this configuration:
 
 ```json
 {
   "channels": {
-    "telegram": {
-      "dmPolicy": "allowlist",
-      "allowFrom": ["<USER_TELEGRAM_ID>"],
-      "groupPolicy": "disabled"
+    "discord": {
+      "botToken": "YOUR_BOT_TOKEN",
+      "guildId": "YOUR_GUILD_ID",
+      "channelIds": ["AUTHORIZED_CHANNEL_ID"],
+      "dmPolicy": "disabled"
     }
   }
 }
@@ -33,31 +34,37 @@ Every bot MUST have this configuration:
 
 | Setting | Value | Effect |
 |---------|-------|--------|
-| `dmPolicy` | `allowlist` | Only listed IDs can message the bot |
-| `allowFrom` | `["123456789"]` | The user's Telegram ID |
-| `groupPolicy` | `disabled` | Bot cannot be added to any groups |
+| `guildId` | `"123456789"` | Bot only operates in this server |
+| `channelIds` | `["987654321"]` | Bot only responds in these channels |
+| `dmPolicy` | `"disabled"` | Bot ignores all direct messages |
 
 ### Security Guarantees
 
-- ✅ **Only the authorized user** can communicate with their bot
-- ✅ **No group chat access** — prevents data leakage
-- ✅ **Silent rejection** — unauthorized users get no response
-- ✅ **Isolated memory** — each bot has separate VPS and data
+- ✅ **Channel isolation** — Bot only responds in explicitly listed channels
+- ✅ **No DM access** — Prevents unauthorized private communication
+- ✅ **Guild-locked** — Cannot be used in other Discord servers
+- ✅ **Isolated memory** — Each bot has separate VPS and data
+- ✅ **Permission-based access** — Discord roles control who can access channels
 
 ---
 
-## How to Get Telegram ID
+## Discord Channel Setup
 
-Users should message `@userinfobot` on Telegram:
+Each executive gets a private channel:
 
-1. Open Telegram
-2. Search for `@userinfobot`
-3. Tap **Start**
-4. Bot replies with your ID:
-   ```
-   Your user ID: 123456789
-   ```
-5. Use this number in the `allowFrom` configuration
+1. Create a category (e.g., "Executives")
+2. Create a private channel per user (e.g., `#barry`, `#erica`)
+3. Set channel permissions:
+   - Only the executive + admins can view
+   - Bot has Send Messages + Read Message History
+4. Use that channel's ID in the agent's `channelIds` config
+
+### How to Get Discord IDs
+
+Enable Developer Mode in Discord:
+1. User Settings → App Settings → Advanced
+2. Enable **Developer Mode**
+3. Right-click any channel/server → **Copy ID**
 
 ---
 
@@ -160,8 +167,8 @@ tailscale status
 # Check Clawdbot health
 clawdbot doctor
 
-# Verify bot is locked to user
-clawdbot config get channels.telegram
+# Verify bot is locked to channel
+clawdbot config get channels.discord
 ```
 
 ---
@@ -181,13 +188,13 @@ clawdbot config get channels.telegram
 
 ## Incident Response
 
-If an unauthorized access attempt is detected:
+If unauthorized access is attempted:
 
-1. Bot ignores the message (no response)
-2. Attempt is logged
-3. Repeated attempts trigger alert
+1. Bot ignores messages outside configured channels
+2. Attempts are logged
+3. Discord audit log captures all activity
 4. Team investigates source
 
 ---
 
-*Security is non-negotiable. Every bot MUST be locked to its user's Telegram ID before activation.* 🔒
+*Security is non-negotiable. Every bot MUST be locked to its designated channel before activation.* 🔒
