@@ -2,8 +2,6 @@
 
 One-command deployment of Clawdbot on a fresh Ubuntu VPS.
 
-> **For the vision and philosophy, see [cardinal-next](https://github.com/nickflorez/cardinal-next)**
-
 ---
 
 ## Quick Start
@@ -40,7 +38,7 @@ cd clawdbot-vps-deploy
 
 | Template | Description |
 |----------|-------------|
-| [Workspace](templates/workspace/) | User workspace repo template |
+| [Workspace](templates/workspace/) | User workspace repo template (inbox, drafts, approved, decisions) |
 | [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
 
 ---
@@ -126,6 +124,21 @@ See [docs/security.md](docs/security.md) for mandatory VPS hardening steps:
 ├── .env                        # API keys
 └── agents/main/sessions/       # Conversation history
 ```
+
+---
+
+## Cron Jobs
+
+The setup installs these cron jobs for QMD indexing:
+
+| Time | Command |
+|------|---------|
+| 12:00 PM | `qmd update && qmd embed` |
+| 3:00 PM | `qmd update && qmd embed` |
+| 6:00 PM | `qmd update && qmd embed` |
+| 3:00 AM | `qmd update && qmd embed` |
+
+Logs: `/root/clawd/logs/qmd-index.log`
 
 ---
 
