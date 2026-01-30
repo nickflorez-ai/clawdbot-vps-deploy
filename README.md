@@ -1,12 +1,77 @@
-# Clawdbot VPS Deploy
+# Moltbot VPS Deploy
 
-One-command deployment of Clawdbot on a fresh Ubuntu VPS.
+Deploy Moltbot (formerly Clawdbot) personal AI assistant on a VPS.
+
+> **Recommended:** Use Hostinger's one-click Docker deployment for the easiest setup.
 
 ---
 
-## Quick Start
+## Option 1: Hostinger One-Click Deploy (Recommended)
 
-SSH into your fresh Ubuntu 24.04 VPS and run:
+The fastest way to get Moltbot running. No command line required.
+
+### New VPS
+
+1. Go to [Hostinger Moltbot VPS](https://www.hostinger.com/vps/docker/moltbot)
+2. Select a plan ($5-6/mo works fine)
+3. Click **Deploy** — Moltbot is pre-selected
+4. Complete purchase
+
+During setup, configure:
+- `MOLTBOT_GATEWAY_TOKEN` — Auto-generated (**save this!**)
+- `ANTHROPIC_API_KEY` — Your Claude API key
+- `OPENAI_API_KEY` — Optional
+
+### Existing Hostinger VPS
+
+1. Access **hPanel** → **Docker Manager**
+2. Install Docker Manager if not installed (takes 2-3 min)
+3. Go to **Catalog** → Search "Moltbot"
+4. Click **Deploy**
+5. Configure environment variables
+6. Click **Deploy**
+
+### Access Moltbot
+
+1. In Docker Manager, note the assigned port
+2. Visit `http://your-vps-ip:port`
+3. Enter your gateway token → **Connect**
+
+### Connect Discord
+
+1. Go to **Settings** → **Config** → **RAW**
+2. Add Discord configuration:
+
+```json
+{
+  "channels": {
+    "discord": {
+      "enabled": true,
+      "token": "YOUR_DISCORD_BOT_TOKEN",
+      "channelIds": ["YOUR_CHANNEL_ID"],
+      "dm": {
+        "policy": "pairing"
+      }
+    }
+  }
+}
+```
+
+3. Click **Apply** → **Update**
+4. Go to **Overview** → **Restart Gateway**
+5. Check **Channels** — Discord should show as connected
+
+See [docs/hostinger-setup.md](docs/hostinger-setup.md) for the complete guide.
+
+---
+
+## Option 2: Manual Ubuntu Setup
+
+For non-Hostinger VPS or custom setups.
+
+### Quick Start
+
+SSH into your fresh Ubuntu 24.04 VPS:
 
 ```bash
 curl -sL https://raw.githubusercontent.com/nickflorez-ai/clawdbot-vps-deploy/main/setup.sh | bash
@@ -20,46 +85,31 @@ cd clawdbot-vps-deploy
 ./setup.sh
 ```
 
----
-
-## What It Does
+### What It Does
 
 1. **Installs Node.js 22** via NodeSource
 2. **Installs Clawdbot** globally via npm
 3. **Installs QMD** for semantic search
 4. **Creates workspace** at `/root/clawd/`
 5. **Sets up collections** (sessions, memory, workspace)
-6. **Configures cron jobs** for QMD indexing (12pm, 3pm, 6pm, 3am)
+6. **Configures cron jobs** for QMD indexing
 7. **Installs systemd service** for Clawdbot gateway
 
----
+### Post-Install
 
-## Templates
-
-| Template | Description |
-|----------|-------------|
-| [Workspace](templates/workspace/) | User workspace repo template (inbox, drafts, approved, decisions) |
-| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
-
----
-
-## Post-Install Steps
-
-After running the setup script:
-
-### 1. Add API Keys
+#### Add API Keys
 
 ```bash
 cat > ~/.clawdbot/.env << 'EOF'
 ANTHROPIC_API_KEY=your-key-here
-OPENAI_API_KEY=your-key-here  # Optional fallback
+OPENAI_API_KEY=your-key-here
 EOF
 chmod 600 ~/.clawdbot/.env
 ```
 
-### 2. Configure Discord Bot
+#### Configure Discord
 
-Edit `~/.clawdbot/clawdbot.json` and add your bot configuration:
+Edit `~/.clawdbot/clawdbot.json`:
 
 ```json
 {
@@ -74,34 +124,34 @@ Edit `~/.clawdbot/clawdbot.json` and add your bot configuration:
 }
 ```
 
-**Required values:**
-- `botToken` — Discord bot token from [Discord Developer Portal](https://discord.com/developers/applications)
-- `guildId` — Your Discord server ID
-- `channelIds` — Array of channel IDs this agent can respond in
+#### Customize Agent
 
-### 3. Customize Agent
+Edit workspace files in `/root/clawd/`:
+- `SOUL.md` — Agent personality
+- `USER.md` — User info
+- `AGENTS.md` — Behavioral instructions
 
-Edit the workspace files in `/root/clawd/`:
-- `SOUL.md` - Agent personality and name
-- `USER.md` - Info about the user
-- `AGENTS.md` - Behavioral instructions
-
-### 4. Start the Gateway
+#### Start Gateway
 
 ```bash
 clawdbot gateway start
 clawdbot status
 ```
 
-### 5. Verify Discord Connection
+---
 
-Check that the bot is online in your Discord server and responding in the configured channel.
+## Templates
+
+| Template | Description |
+|----------|-------------|
+| [Workspace](templates/workspace/) | User workspace repo template |
+| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
 
 ---
 
 ## Security
 
-See [docs/security.md](docs/security.md) for mandatory VPS hardening steps:
+See [docs/security.md](docs/security.md) for VPS hardening:
 - Tailscale-only SSH
 - Discord channel allowlist
 - Firewall configuration
@@ -127,27 +177,11 @@ See [docs/security.md](docs/security.md) for mandatory VPS hardening steps:
 
 ---
 
-## Cron Jobs
-
-The setup installs these cron jobs for QMD indexing:
-
-| Time | Command |
-|------|---------|
-| 12:00 PM | `qmd update && qmd embed` |
-| 3:00 PM | `qmd update && qmd embed` |
-| 6:00 PM | `qmd update && qmd embed` |
-| 3:00 AM | `qmd update && qmd embed` |
-
-Logs: `/root/clawd/logs/qmd-index.log`
-
----
-
 ## Maintenance
 
 ```bash
 # Check status
 clawdbot status
-clawdbot gateway status
 
 # View logs
 clawdbot logs --follow
@@ -158,19 +192,31 @@ clawdbot gateway restart
 # Update Clawdbot
 npm update -g clawdbot
 clawdbot gateway restart
-
-# Manual QMD reindex
-qmd update && qmd embed
 ```
+
+### Hostinger Docker Updates
+
+In Docker Manager → Your Moltbot project → **Rebuild**
+
+---
+
+## Resources
+
+- [Hostinger Moltbot Guide](https://www.hostinger.com/support/how-to-install-moltbot-on-hostinger-vps/)
+- [Hostinger Security Guide](https://www.hostinger.com/support/how-to-secure-and-harden-moltbot-security/)
+- [Moltbot Docs](https://docs.molt.bot)
 
 ---
 
 ## Requirements
 
+### Hostinger Docker
+- Any Hostinger VPS plan with Docker Manager
+
+### Manual Setup
 - Ubuntu 22.04 or 24.04
 - Root access
 - 2+ CPU cores, 4GB+ RAM recommended
-- Internet access
 
 ---
 
