@@ -1,130 +1,138 @@
-# Asana Integration
+# Asana OAuth Integration
 
-Connect OpenClaw to Asana for task and project management.
+Connect OpenClaw to Asana using OAuth for secure task and project management.
 
 ---
 
 ## Overview
 
-OpenClaw can integrate with Asana to:
+OpenClaw integrates with Asana to:
 - View and create tasks
 - Manage projects
 - Track goals
 - Search across workspaces
 
+**Authentication:** OAuth (not Personal Access Tokens)
+
 ---
 
-## Step 1: Create Asana Developer App
+## Prerequisites
 
-1. Go to [Asana Developer Console](https://app.asana.com/0/developer-console)
+1. Asana OAuth app created (admin does this once)
+2. `asana-oauth.sh` script installed on VPS
+3. SSH access to the VPS
+
+---
+
+## Step 1: Create Asana OAuth App (Admin Only)
+
+**This is done once for all executives.**
+
+1. Go to [Asana Developer Console](https://app.asana.com/0/my-apps)
 2. Click **Create new app**
 3. Fill in:
-   - **App name:** "OpenClaw Assistant"
-   - **What's it for:** Select appropriate option
-4. Click **Create app**
+   - **App name:** "Cardinal AI Collaborator"
+   - **Redirect URI:** `urn:ietf:wg:oauth:2.0:oob` (for CLI apps)
+4. Note the **Client ID** and **Client Secret**
+5. Store in 1Password: `asana.oauth-cardinal`
 
 ---
 
-## Step 2: Generate Personal Access Token (Recommended)
+## Step 2: Install OAuth Script
 
-For single-user setups, a Personal Access Token (PAT) is simplest:
-
-1. In the Asana Developer Console, go to your app
-2. Navigate to **Personal access tokens** section
-3. Click **Create new token**
-4. Name it (e.g., "OpenClaw VPS")
-5. Copy the token immediately (shown only once)
-
----
-
-## Step 3: Configure OpenClaw
-
-### Store the token
-
-SSH into your VPS:
+The `asana-oauth.sh` script handles the OAuth flow for headless servers.
 
 ```bash
-# Create secrets directory
-mkdir -p ~/clawd/.secrets
-
-# Save the token
-echo "ASANA_PAT=your_token_here" > ~/clawd/.secrets/asana.env
-chmod 600 ~/clawd/.secrets/asana.env
+# Download the script
+curl -fsSL https://raw.githubusercontent.com/nickflorez-ai/openclaw-vps-deploy/main/scripts/asana-oauth.sh \
+  -o /usr/local/bin/asana-oauth.sh
+chmod +x /usr/local/bin/asana-oauth.sh
 ```
-
-### Add to OpenClaw config
-
-In the OpenClaw web interface:
-
-1. Go to **Settings** → **Config** → **RAW**
-2. Add:
-
-```json
-{
-  "integrations": {
-    "asana": {
-      "enabled": true,
-      "tokenPath": "/root/clawd/.secrets/asana.env"
-    }
-  }
-}
-```
-
-3. Click **Apply** → **Update**
-4. Restart Gateway
 
 ---
 
-## Step 4: Verify Integration
+## Step 3: Configure OAuth Credentials
 
-SSH into your VPS and test:
+Add the OAuth app credentials to the VPS environment:
 
 ```bash
-# Set the token
-export ASANA_PAT=$(cat ~/clawd/.secrets/asana.env | cut -d= -f2)
+# Add to shell profile
+echo 'export ASANA_CLIENT_ID="your-client-id"' >> ~/.bashrc
+echo 'export ASANA_CLIENT_SECRET="your-client-secret"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+---
+
+## Step 4: Authenticate (Executive Does This)
+
+Run the OAuth flow:
+
+```bash
+asana-oauth.sh auth
+```
+
+**What happens:**
+1. Script prints an Asana authorization URL
+2. Executive opens the URL in their browser
+3. Executive clicks **Allow** to grant access
+4. Asana displays an authorization code
+5. Executive pastes the code back into the terminal
+6. Script exchanges code for access/refresh tokens
+7. Tokens are saved to `~/.config/asana/token.json`
+
+---
+
+## Step 5: Verify Authentication
+
+```bash
+asana-oauth.sh status
+```
+
+Should show: `Authenticated as: [Name] ([email])`
+
+---
+
+## Using the Token
+
+Get the current access token for API calls:
+
+```bash
+export ASANA_ACCESS_TOKEN=$(asana-oauth.sh token)
 
 # Test API access
-curl -H "Authorization: Bearer $ASANA_PAT" \
+curl -H "Authorization: Bearer $ASANA_ACCESS_TOKEN" \
   https://app.asana.com/api/1.0/users/me
 ```
 
-You should see your Asana user info.
+---
+
+## Token Refresh
+
+Access tokens expire after 1 hour. Refresh them:
+
+```bash
+asana-oauth.sh refresh
+```
+
+The script automatically preserves the refresh token.
 
 ---
 
-## OAuth Flow (Alternative)
+## Script Commands
 
-For multi-user or more secure setups, use OAuth:
-
-### Configure OAuth App
-
-1. In Asana Developer Console → your app
-2. Go to **OAuth** section
-3. Add redirect URI: `http://localhost:8080/callback`
-4. Note your **Client ID** and **Client Secret**
-
-### OAuth Configuration
-
-```json
-{
-  "integrations": {
-    "asana": {
-      "enabled": true,
-      "oauth": {
-        "clientId": "YOUR_CLIENT_ID",
-        "clientSecret": "YOUR_CLIENT_SECRET",
-        "redirectUri": "http://localhost:8080/callback"
-      }
-    }
-  }
-}
-```
+| Command | Description |
+|---------|-------------|
+| `asana-oauth.sh auth` | Run OAuth flow (first time) |
+| `asana-oauth.sh refresh` | Refresh access token |
+| `asana-oauth.sh token` | Print current access token |
+| `asana-oauth.sh status` | Check authentication status |
 
 ---
 
 ## Common Operations
 
-Once integrated, OpenClaw can perform these Asana operations:
+Once authenticated, OpenClaw can perform these Asana operations:
 
 ### Tasks
 - List tasks in a project
@@ -143,48 +151,30 @@ Once integrated, OpenClaw can perform these Asana operations:
 
 ---
 
-## Workspace Configuration
-
-If you have multiple Asana workspaces, specify the default:
-
-```json
-{
-  "integrations": {
-    "asana": {
-      "enabled": true,
-      "defaultWorkspace": "1234567890123"
-    }
-  }
-}
-```
-
-Get workspace IDs:
-```bash
-curl -H "Authorization: Bearer $ASANA_PAT" \
-  https://app.asana.com/api/1.0/workspaces
-```
-
----
-
 ## Troubleshooting
 
-### "Not authorized"
-- Verify the PAT is correct and not expired
-- Check token has access to the workspace
+### "ASANA_CLIENT_ID must be set"
+```bash
+source ~/.bashrc  # Reload environment
+```
 
-### "Workspace not found"
-- Ensure the user has access to the workspace
-- Try listing workspaces to get correct ID
+### "Token expired"
+```bash
+asana-oauth.sh refresh
+```
 
-### Token expiration
-- PATs don't expire unless revoked
-- OAuth tokens may need refresh — check OAuth setup
+### "Invalid grant" on refresh
+The refresh token has expired or been revoked. Run:
+```bash
+asana-oauth.sh auth
+```
 
 ---
 
 ## Security Notes
 
+- OAuth credentials are shared (same app for all execs)
+- Each exec's tokens are stored separately on their VPS
+- Tokens are stored in `~/.config/asana/token.json` with 600 permissions
 - Never commit tokens to git
-- Use environment files with restricted permissions
-- Rotate tokens periodically
-- Consider using a dedicated Asana user for the AI assistant
+- Refresh tokens can be revoked from Asana settings

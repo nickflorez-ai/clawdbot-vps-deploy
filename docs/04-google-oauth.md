@@ -28,8 +28,10 @@ Since the VPS has no browser, we use the `--manual` flag for headless authentica
 SSH into your VPS and install `gog`:
 
 ```bash
-# Install via npm
-npm install -g @nicksavio/gog
+# Download and install gog CLI (https://gogcli.sh)
+curl -fsSL https://github.com/steipete/gogcli/releases/latest/download/gogcli_0.9.0_linux_amd64.tar.gz \
+  | tar -xz -C /usr/local/bin
+chmod +x /usr/local/bin/gog
 
 # Verify installation
 gog --version
@@ -173,3 +175,25 @@ gog auth add user@company.com --client=myapp --services=gmail --force-consent --
 - Use `gog auth remove` to revoke access when needed
 - Rotate OAuth credentials periodically
 - Consider using a dedicated Google Workspace account for the AI
+
+---
+
+## Keyring Configuration (Required for VPS)
+
+On headless servers, gog needs file-based token storage:
+
+```bash
+# Set keyring to file mode
+gog auth keyring file
+
+# Create secure password file
+mkdir -p ~/.config/gog
+openssl rand -base64 32 > ~/.config/gog/.keyring-password
+chmod 600 ~/.config/gog/.keyring-password
+
+# Add to shell profile
+echo 'export GOG_KEYRING_PASSWORD="$(cat ~/.config/gog/.keyring-password)"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+Without this, gog commands will hang trying to access the system keyring.
