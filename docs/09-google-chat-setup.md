@@ -11,40 +11,47 @@ This guide sets up Google Chat as a messaging channel for OpenClaw using OAuth (
 ### Step 1: Enable the Google Chat API
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com)
-2. Select or create a project for Cardinal AI
+2. Select the existing project: **cardinal-ai-collaborator**
 3. Navigate to **APIs & Services** → **Library**
 4. Search for **Google Chat API**
 5. Click **Enable**
 
-### Step 2: Create OAuth 2.0 Credentials
+### Step 2: OAuth Credentials
 
+**We reuse the existing OAuth client** — no new client needed.
+
+Just add the redirect URI for your deployment to the existing client:
+
+| Deployment | Redirect URI |
+|------------|--------------|
+| Nick's Mac mini | `https://ottos-mac-mini.tail72a244.ts.net/oauth/callback/googlechat` |
+| Barry VPS | `https://srv1073915.tail72a244.ts.net/oauth/callback/googlechat` |
+| Erica VPS | `https://srv1297409-erica.tail72a244.ts.net/oauth/callback/googlechat` |
+| Joe VPS | `https://srv1297411-joe.tail72a244.ts.net/oauth/callback/googlechat` |
+| New VPS | `https://<tailscale-hostname>.tail72a244.ts.net/oauth/callback/googlechat` |
+
+**To add a redirect URI:**
 1. Go to **APIs & Services** → **Credentials**
-2. Click **+ Create Credentials** → **OAuth client ID**
-3. Application type: **Web application**
-4. Name: `OpenClaw Google Chat` (or executive's name)
-5. **Authorized redirect URIs** — add ONE of these depending on deployment:
+2. Click on the existing OAuth 2.0 Client ID
+3. Under **Authorized redirect URIs**, click **+ Add URI**
+4. Paste the appropriate URI from the table above
+5. Click **Save**
 
-   **For local/dev (Mac mini):**
-   ```
-   http://localhost:18789/oauth/callback/googlechat
-   ```
+### Step 3: Add Chat Scopes to Consent Screen
 
-   **For VPS with Tailscale:**
+1. Go to **APIs & Services** → **OAuth consent screen**
+2. Click **Edit App**
+3. Go to **Scopes** → **Add or Remove Scopes**
+4. Add these scopes:
    ```
-   https://<tailscale-hostname>/oauth/callback/googlechat
+   https://www.googleapis.com/auth/chat.messages
+   https://www.googleapis.com/auth/chat.spaces.readonly
    ```
+5. Click **Save and Continue**
 
-   **For VPS with public domain:**
-   ```
-   https://<your-domain>/oauth/callback/googlechat
-   ```
+> ⚠️ **Note:** Do NOT add `chat.bot` — that's for service accounts only.
 
-6. Click **Create**
-7. **Copy and securely store:**
-   - Client ID (ends in `.apps.googleusercontent.com`)
-   - Client Secret
-
-### Step 3: Configure the Chat App
+### Step 4: Configure the Chat App
 
 1. In GCP Console, go to **Google Chat API** → **Configuration**
 2. Fill in:
@@ -63,39 +70,17 @@ This guide sets up Google Chat as a messaging channel for OpenClaw using OAuth (
 
 4. Click **Save**
 
-### Step 4: Configure OAuth Consent Screen
-
-1. Go to **APIs & Services** → **OAuth consent screen**
-2. User type: **Internal** (Cardinal Workspace only)
-3. App name: `OpenClaw`
-4. Support email: your email
-5. **Scopes** — click **Add or Remove Scopes** and add:
-   ```
-   https://www.googleapis.com/auth/chat.bot
-   https://www.googleapis.com/auth/chat.messages
-   https://www.googleapis.com/auth/chat.spaces.readonly
-   ```
-6. Click **Save and Continue**
-7. **Publish** the app (Internal only — no review needed)
-
-### Step 5: Send Credentials to IT
-
-Securely share with IT/Nick:
-- Client ID
-- Client Secret
-- Redirect URI you configured
-
 ---
 
-## Part 2: OpenClaw Configuration (IT / Nick)
+## Part 2: OpenClaw Configuration
 
-### Step 1: Install the Google Chat Plugin
+### Credentials
 
-```bash
-openclaw plugins install @openclaw/googlechat
-```
+Stored in **1Password:** `Cardinal Google OAuth` (Otto vault)
 
-### Step 2: Add Configuration
+Or locally: `~/.secrets/cardinal-oauth.json`
+
+### Step 1: Add Configuration
 
 Edit your OpenClaw config (`~/.openclaw/openclaw.json` or via Control UI → Config → RAW):
 
@@ -106,11 +91,11 @@ Edit your OpenClaw config (`~/.openclaw/openclaw.json` or via Control UI → Con
       "googlechat": {
         "enabled": true,
         "config": {
-          "clientId": "YOUR_CLIENT_ID.apps.googleusercontent.com",
-          "clientSecret": "YOUR_CLIENT_SECRET",
-          "redirectUri": "http://localhost:18789/oauth/callback/googlechat",
+          "clientId": "<from 1Password or cardinal-oauth.json>",
+          "clientSecret": "<from 1Password or cardinal-oauth.json>",
+          "redirectUri": "https://<your-tailscale-hostname>.tail72a244.ts.net/oauth/callback/googlechat",
           "dmPolicy": "allowlist",
-          "allowFrom": ["nick.florez@cardinalfinancial.com"]
+          "allowFrom": ["your.email@cardinalfinancial.com"]
         }
       }
     }
@@ -122,19 +107,19 @@ Edit your OpenClaw config (`~/.openclaw/openclaw.json` or via Control UI → Con
 
 | Field | Description |
 |-------|-------------|
-| `clientId` | OAuth Client ID from GCP |
-| `clientSecret` | OAuth Client Secret from GCP |
-| `redirectUri` | Must match GCP exactly |
+| `clientId` | OAuth Client ID (same for all deployments) |
+| `clientSecret` | OAuth Client Secret (same for all deployments) |
+| `redirectUri` | Must match GCP exactly — use your Tailscale hostname |
 | `dmPolicy` | `"allowlist"` (recommended) or `"pairing"` or `"open"` |
 | `allowFrom` | Array of allowed email addresses |
 
-### Step 3: Restart Gateway
+### Step 2: Restart Gateway
 
 ```bash
 openclaw gateway restart
 ```
 
-### Step 4: Complete OAuth Consent
+### Step 3: Complete OAuth Consent
 
 1. Check OpenClaw logs or Control UI for an OAuth URL
 2. Open the URL in your browser
@@ -142,7 +127,7 @@ openclaw gateway restart
 4. Grant the requested permissions
 5. You'll be redirected back — tokens are now cached
 
-### Step 5: Test
+### Step 4: Test
 
 1. Open **Google Chat** (Gmail sidebar or chat.google.com)
 2. Click **+ Start a chat**
@@ -157,14 +142,14 @@ If it responds — you're live! ✅
 ## Troubleshooting
 
 ### "App not found in Chat"
-- Ensure the Chat App is published (Step 3)
+- Ensure the Chat App is published (Part 1, Step 4)
 - Ensure you're signed into the correct Workspace account
 - Wait 1-2 minutes for propagation
 
 ### OAuth fails / redirect error
 - Verify redirect URI matches **exactly** (including trailing slashes)
+- Verify your Tailscale hostname is correct
 - Check that OAuth consent screen is published
-- Verify Internal user type is set
 
 ### "Insufficient permissions"
 - Add the required scopes to OAuth consent screen
@@ -182,16 +167,7 @@ If it responds — you're live! ✅
 - **Internal only:** Only Cardinal Workspace users can access
 - **OAuth tokens:** Stored locally in `~/.openclaw/` — treat as sensitive
 - **No service account:** Uses user-delegated OAuth — more secure, requires consent
-
----
-
-## Next Steps
-
-Once working for Nick:
-1. Create additional Chat Apps for other executives (or reuse one)
-2. Add executive emails to `allowFrom`
-3. Each exec completes OAuth consent once
-4. Done — they message via Google Chat
+- **Tailscale only:** All redirect URIs use Tailscale hostnames — no public exposure
 
 ---
 
@@ -199,7 +175,6 @@ Once working for Nick:
 
 | Item | Value |
 |------|-------|
-| GCP Console | https://console.cloud.google.com |
-| Chat API | https://console.cloud.google.com/apis/library/chat.googleapis.com |
-| OAuth Credentials | https://console.cloud.google.com/apis/credentials |
-| Chat App Config | https://console.cloud.google.com/apis/api/chat.googleapis.com/hangouts-chat |
+| GCP Project | cardinal-ai-collaborator |
+| Tailscale Domain | tail72a244.ts.net |
+| 1Password Item | Cardinal Google OAuth (Otto vault) |
