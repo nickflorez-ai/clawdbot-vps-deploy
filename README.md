@@ -1,6 +1,6 @@
-# Moltbot VPS Deploy
+# OpenClaw VPS Deploy
 
-Deploy Moltbot (formerly Clawdbot) personal AI assistant on a VPS.
+Deploy [OpenClaw](https://openclaw.ai) personal AI assistant on a VPS.
 
 > **Recommended:** Use Hostinger's one-click Docker deployment for the easiest setup.
 
@@ -8,13 +8,13 @@ Deploy Moltbot (formerly Clawdbot) personal AI assistant on a VPS.
 
 ## Option 1: Hostinger One-Click Deploy (Recommended)
 
-The fastest way to get Moltbot running. No command line required.
+The fastest way to get OpenClaw running. No command line required.
 
 ### New VPS
 
-1. Go to [Hostinger Moltbot VPS](https://www.hostinger.com/vps/docker/moltbot)
+1. Go to [Hostinger Moltbot VPS](https://www.hostinger.com/vps/docker/moltbot) *(still uses Moltbot name)*
 2. Select a plan ($5-6/mo works fine)
-3. Click **Deploy** — Moltbot is pre-selected
+3. Click **Deploy** — Moltbot/OpenClaw is pre-selected
 4. Complete purchase
 
 During setup, configure:
@@ -31,7 +31,7 @@ During setup, configure:
 5. Configure environment variables
 6. Click **Deploy**
 
-### Access Moltbot
+### Access OpenClaw
 
 1. In Docker Manager, note the assigned port
 2. Visit `http://your-vps-ip:port`
@@ -74,48 +74,48 @@ For non-Hostinger VPS or custom setups.
 SSH into your fresh Ubuntu 24.04 VPS:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/nickflorez-ai/clawdbot-vps-deploy/main/setup.sh | bash
+curl -sL https://raw.githubusercontent.com/nickflorez-ai/openclaw-vps-deploy/main/setup.sh | bash
 ```
 
 Or clone and run:
 
 ```bash
-git clone https://github.com/nickflorez-ai/clawdbot-vps-deploy.git
-cd clawdbot-vps-deploy
+git clone https://github.com/nickflorez-ai/openclaw-vps-deploy.git
+cd openclaw-vps-deploy
 ./setup.sh
 ```
 
 ### What It Does
 
 1. **Installs Node.js 22** via NodeSource
-2. **Installs Clawdbot** globally via npm
+2. **Installs OpenClaw** globally via npm
 3. **Installs QMD** for semantic search
 4. **Creates workspace** at `/root/clawd/`
 5. **Sets up collections** (sessions, memory, workspace)
 6. **Configures cron jobs** for QMD indexing
-7. **Installs systemd service** for Clawdbot gateway
+7. **Installs systemd service** for OpenClaw gateway
 
 ### Post-Install
 
 #### Add API Keys
 
 ```bash
-cat > ~/.clawdbot/.env << 'EOF'
+cat > ~/.openclaw/.env << 'EOF'
 ANTHROPIC_API_KEY=your-key-here
 OPENAI_API_KEY=your-key-here
 EOF
-chmod 600 ~/.clawdbot/.env
+chmod 600 ~/.openclaw/.env
 ```
 
 #### Configure Discord
 
-Edit `~/.clawdbot/clawdbot.json`:
+Edit `~/.openclaw/config.json`:
 
 ```json
 {
   "channels": {
     "discord": {
-      "botToken": "YOUR_BOT_TOKEN",
+      "token": "YOUR_BOT_TOKEN",
       "guildId": "YOUR_GUILD_ID",
       "channelIds": ["CHANNEL_ID"],
       "dmPolicy": "disabled"
@@ -134,8 +134,8 @@ Edit workspace files in `/root/clawd/`:
 #### Start Gateway
 
 ```bash
-clawdbot gateway start
-clawdbot status
+openclaw gateway start
+openclaw status
 ```
 
 ---
@@ -145,7 +145,7 @@ clawdbot status
 | Template | Description |
 |----------|-------------|
 | [Workspace](templates/workspace/) | User workspace repo template |
-| [Clawdbot Config](templates/clawdbot.json) | Default Clawdbot configuration |
+| [Config](templates/config.json) | Default OpenClaw configuration |
 
 ---
 
@@ -169,8 +169,8 @@ See [docs/security.md](docs/security.md) for VPS hardening:
 ├── memory/                     # Daily notes
 └── logs/                       # Log files
 
-~/.clawdbot/
-├── clawdbot.json              # Main config
+~/.openclaw/
+├── config.json                # Main config
 ├── .env                        # API keys
 └── agents/main/sessions/       # Conversation history
 ```
@@ -181,30 +181,30 @@ See [docs/security.md](docs/security.md) for VPS hardening:
 
 ```bash
 # Check status
-clawdbot status
+openclaw status
 
 # View logs
-clawdbot logs --follow
+openclaw logs --follow
 
 # Restart gateway
-clawdbot gateway restart
+openclaw gateway restart
 
-# Update Clawdbot
-npm update -g clawdbot
-clawdbot gateway restart
+# Update OpenClaw
+npm update -g openclaw
+openclaw gateway restart
 ```
 
 ### Hostinger Docker Updates
 
-In Docker Manager → Your Moltbot project → **Rebuild**
+In Docker Manager → Your project → **Rebuild**
 
 ---
 
 ## Resources
 
+- [OpenClaw Website](https://openclaw.ai)
 - [Hostinger Moltbot Guide](https://www.hostinger.com/support/how-to-install-moltbot-on-hostinger-vps/)
 - [Hostinger Security Guide](https://www.hostinger.com/support/how-to-secure-and-harden-moltbot-security/)
-- [Moltbot Docs](https://docs.molt.bot)
 
 ---
 

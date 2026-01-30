@@ -1,6 +1,8 @@
-# Hostinger Moltbot Setup Guide
+# Hostinger OpenClaw Setup Guide
 
-Complete guide for deploying Moltbot on Hostinger VPS using their one-click Docker template.
+Complete guide for deploying OpenClaw on Hostinger VPS using their one-click Docker template.
+
+> **Note:** Hostinger's catalog still uses the "Moltbot" name. Moltbot = OpenClaw.
 
 ## Prerequisites
 
@@ -10,7 +12,7 @@ Complete guide for deploying Moltbot on Hostinger VPS using their one-click Dock
 
 ---
 
-## Step 1: Deploy Moltbot
+## Step 1: Deploy OpenClaw
 
 ### New VPS Purchase
 
@@ -51,9 +53,9 @@ Click **Deploy** to start the container.
 
 ---
 
-## Step 3: Access Moltbot Web Interface
+## Step 3: Access OpenClaw Web Interface
 
-1. In Docker Manager, go to your Moltbot project
+1. In Docker Manager, go to your project
 2. Note the **port number** (usually 18789)
 3. Access: `http://YOUR_VPS_IP:PORT`
 4. Enter your gateway token
@@ -79,7 +81,7 @@ You should see "Health: OK" in the top right.
    - Permissions: Send Messages, Read Message History, Add Reactions
 6. Copy the invite URL and add bot to your server
 
-### Configure in Moltbot
+### Configure in OpenClaw
 
 1. Go to **Settings** → **Config**
 2. Click **RAW** button (bottom of page)
@@ -196,9 +198,9 @@ See [Hostinger's security guide](https://www.hostinger.com/support/how-to-secure
 
 ---
 
-## Updating Moltbot
+## Updating OpenClaw
 
-1. Go to Docker Manager → Your Moltbot project
+1. Go to Docker Manager → Your project
 2. Click **Rebuild** or **Update**
 3. Docker pulls the latest image
 4. Container restarts automatically
@@ -207,7 +209,7 @@ See [Hostinger's security guide](https://www.hostinger.com/support/how-to-secure
 
 ## Useful Links
 
+- [OpenClaw Website](https://openclaw.ai)
 - [Hostinger Moltbot Page](https://www.hostinger.com/vps/docker/moltbot)
-- [Moltbot Documentation](https://docs.molt.bot)
 - [Discord Developer Portal](https://discord.com/developers/applications)
 - [Anthropic Console](https://console.anthropic.com)
