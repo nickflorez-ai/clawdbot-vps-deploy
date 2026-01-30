@@ -19,7 +19,6 @@ OpenClaw integrates with Asana to:
 ## Prerequisites
 
 1. Asana OAuth app created (admin does this once)
-2. `asana-oauth.sh` script installed on VPS
 3. SSH access to the VPS
 
 ---
@@ -28,25 +27,19 @@ OpenClaw integrates with Asana to:
 
 **This is done once for all executives.**
 
-1. Go to [Asana Developer Console](https://app.asana.com/0/my-apps)
 2. Click **Create new app**
 3. Fill in:
    - **App name:** "Cardinal AI Collaborator"
    - **Redirect URI:** `urn:ietf:wg:oauth:2.0:oob` (for CLI apps)
 4. Note the **Client ID** and **Client Secret**
-5. Store in 1Password: `asana.oauth-cardinal`
 
 ---
 
 ## Step 2: Install OAuth Script
 
-The `asana-oauth.sh` script handles the OAuth flow for headless servers.
 
 ```bash
 # Download the script
-curl -fsSL https://raw.githubusercontent.com/nickflorez-ai/openclaw-vps-deploy/main/scripts/asana-oauth.sh \
-  -o /usr/local/bin/asana-oauth.sh
-chmod +x /usr/local/bin/asana-oauth.sh
 ```
 
 ---
@@ -69,7 +62,6 @@ source ~/.bashrc
 Run the OAuth flow:
 
 ```bash
-asana-oauth.sh auth
 ```
 
 **What happens:**
@@ -79,14 +71,12 @@ asana-oauth.sh auth
 4. Asana displays an authorization code
 5. Executive pastes the code back into the terminal
 6. Script exchanges code for access/refresh tokens
-7. Tokens are saved to `~/.config/asana/token.json`
 
 ---
 
 ## Step 5: Verify Authentication
 
 ```bash
-asana-oauth.sh status
 ```
 
 Should show: `Authenticated as: [Name] ([email])`
@@ -98,11 +88,9 @@ Should show: `Authenticated as: [Name] ([email])`
 Get the current access token for API calls:
 
 ```bash
-export ASANA_ACCESS_TOKEN=$(asana-oauth.sh token)
 
 # Test API access
 curl -H "Authorization: Bearer $ASANA_ACCESS_TOKEN" \
-  https://app.asana.com/api/1.0/users/me
 ```
 
 ---
@@ -112,7 +100,6 @@ curl -H "Authorization: Bearer $ASANA_ACCESS_TOKEN" \
 Access tokens expire after 1 hour. Refresh them:
 
 ```bash
-asana-oauth.sh refresh
 ```
 
 The script automatically preserves the refresh token.
@@ -123,10 +110,6 @@ The script automatically preserves the refresh token.
 
 | Command | Description |
 |---------|-------------|
-| `asana-oauth.sh auth` | Run OAuth flow (first time) |
-| `asana-oauth.sh refresh` | Refresh access token |
-| `asana-oauth.sh token` | Print current access token |
-| `asana-oauth.sh status` | Check authentication status |
 
 ---
 
@@ -160,13 +143,11 @@ source ~/.bashrc  # Reload environment
 
 ### "Token expired"
 ```bash
-asana-oauth.sh refresh
 ```
 
 ### "Invalid grant" on refresh
 The refresh token has expired or been revoked. Run:
 ```bash
-asana-oauth.sh auth
 ```
 
 ---
@@ -175,6 +156,5 @@ asana-oauth.sh auth
 
 - OAuth credentials are shared (same app for all execs)
 - Each exec's tokens are stored separately on their VPS
-- Tokens are stored in `~/.config/asana/token.json` with 600 permissions
 - Never commit tokens to git
 - Refresh tokens can be revoked from Asana settings
